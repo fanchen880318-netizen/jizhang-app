@@ -117,16 +117,24 @@ class BillProvider extends ChangeNotifier {
   // ============ 导出数据 ============
 
   Future<List<Bill>> getExportBills() async {
-    return await _db.getBills(
-      startDate: _dateRange?.start,
-      endDate: _dateRange?.end,
-    );
+    return await getExportBillsForRange(_dateRange);
   }
 
   Future<double> getExportTotal() async {
+    return await getExportTotalForRange(_dateRange);
+  }
+
+  Future<List<Bill>> getExportBillsForRange(DateTimeRange? range) async {
+    return await _db.getBills(
+      startDate: range?.start,
+      endDate: range?.end,
+    );
+  }
+
+  Future<double> getExportTotalForRange(DateTimeRange? range) async {
     return await _db.getTotalAmount(
-      startDate: _dateRange?.start,
-      endDate: _dateRange?.end,
+      startDate: range?.start,
+      endDate: range?.end,
     );
   }
 }
