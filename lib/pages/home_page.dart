@@ -80,14 +80,17 @@ class _HomePageState extends State<HomePage> {
           ]);
         },
       ),
-      floatingActionButton: Container(
-        width: 56, height: 56,
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(colors: [Color(0xFF5B2444), Color(0xFF3D1529)]),
-          borderRadius: BorderRadius.circular(28),
-          boxShadow: [BoxShadow(color: const Color(0xFF5B2444).withAlpha(80), blurRadius: 12, offset: const Offset(0, 4))],
+      floatingActionButton: GestureDetector(
+        onTap: () => _showAddBillSheet(),
+        child: Container(
+          width: 56, height: 56,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(colors: [Color(0xFF5B2444), Color(0xFF3D1529)]),
+            borderRadius: BorderRadius.circular(28),
+            boxShadow: [BoxShadow(color: const Color(0xFF5B2444).withAlpha(80), blurRadius: 12, offset: const Offset(0, 4))],
+          ),
+          child: const Icon(Icons.add, size: 28, color: Colors.white),
         ),
-        child: const Icon(Icons.add, size: 28, color: Colors.white),
       ),
     );
   }
